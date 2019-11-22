@@ -5,6 +5,7 @@ import { color } from "Styles/Common.js";
 import SingleImage from "./SingleImage.js";
 import RewardListDisplayed from "./RewardListDisplayed.js";
 import renderHTML from "react-render-html";
+import axios from "axios";
 class MainArticleForDetailPage extends Component {
   constructor(props) {
     super(props);
@@ -51,19 +52,25 @@ class MainArticleForDetailPage extends Component {
     };
   }
 
-  //   componentDidMount() {
-  //     axios("http://10.58.5.176:8000/fund/reward")
-  //     .then(res => {
-  //         console.log("date from fetch===", res)
-  //         this.setState({
-  //         })
-  //     })
+  componentDidMount() {
+    fetch("  http://10.58.6.160:8000/fund/reward", {
+      method: "get",
+      headers: {
+        Authorization:
+          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDk0NDYyfQ.CP9e6xzK-YzCQI0JpSiAo259z69i6tVgH138uHhxVOk"
+      }
+    })
+      .then(res => res.json())
+      .then(res =>
+        this.setState({
+          reward: res.data
+        })
+      );
 
-  // console.log("paramRendered===", this.props.match)
-
-  //   }
+    console.log("paramRendered===", this.props.match);
+  }
   render() {
-    console.log(this.props);
+    console.log("관희님 데이터", this.state);
     const allImage = this.props.photo.map((src, index) => (
       <SingleImage src={src} key={index} />
     ));
