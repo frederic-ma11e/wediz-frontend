@@ -6,7 +6,7 @@ import SectionDetail from "./SectionDetail.js";
 import { color } from "Styles/Common.js";
 import CameraIcon from "Images/camera11.png";
 import VideoIcon from "Images/video11.png";
-// import axios from "axios";
+import axios from "axios";
 
 class FundingStoryIntroForm extends Component {
   state = {
@@ -29,18 +29,22 @@ class FundingStoryIntroForm extends Component {
     console.log("typeof filelist===", this.state.file[0]);
     const { file } = this.state;
     const formData = new FormData();
-    // if (file.length >0) {
-    //   for (let i=0; i < file.length; i++) {
-    //     formData.append("photo", file[i], file[i].name)
-    //   }
-    // }
-    // axios
-    // .post('', formData, {
-    //   headers: {
-    //     key: "value"
-    //   }
-    // })
-    // .then(res=> console.log(res))
+    if (file.length > 0) {
+      for (let i = 0; i < file.length; i++) {
+        formData.append("photo", file[i], file[i].name);
+      }
+    }
+    axios
+      .post("http://10.58.6.160:8000/fund/storyimage", formData, {
+        headers: {
+          Authorization:
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDUzMTM1fQ.h2Em9RYbqz4MyxkNG6KlqNbQzew6xldzHr_TXbXcl3w"
+        },
+        body: {
+          photo: "file"
+        }
+      })
+      .then(res => console.log("send", res));
   };
 
   handleImagePreview = event => {

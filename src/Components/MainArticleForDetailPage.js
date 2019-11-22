@@ -4,8 +4,7 @@ import { color } from "Styles/Common.js";
 // import "./MainArticleForDetailPage.scss";
 import SingleImage from "./SingleImage.js";
 import RewardListDisplayed from "./RewardListDisplayed.js";
-import ReactHtmlParser from "react-html-parser";
-
+import renderHTML from "react-render-html";
 class MainArticleForDetailPage extends Component {
   constructor(props) {
     super(props);
@@ -47,7 +46,8 @@ class MainArticleForDetailPage extends Component {
           scheduled_date: "내일",
           option: "화이트"
         }
-      ]
+      ],
+      abc: "<h1>asd</h1>"
     };
   }
 
@@ -82,9 +82,7 @@ class MainArticleForDetailPage extends Component {
           </ImageSlider>
         </ImageSliderContainer>
         <MainArticleContainer>
-          <TextContainer>
-            <div>{ReactHtmlParser(this.props.html)}</div>
-          </TextContainer>
+          <TextContainer> {renderHTML(this.props.html)}</TextContainer>
         </MainArticleContainer>
       </>
     );

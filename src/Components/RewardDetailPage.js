@@ -42,15 +42,15 @@ class RewardDetailPage extends Component {
 
   //     console.log("paramRendered===", this.props.match);
   //   }
-  componentDidMount() {
-    const rawHTML = window.localStorage.getItem("content");
-    this.setState = {
-      htmlTag: rawHTML
-    };
-    console.log(this.state);
-  }
+  // componentDidMount() {
+  //   const rawHTML = window.localStorage.getItem("content");
+  //   this.setState = {
+  //     htmlTag: rawHTML
+  //   };
+  //   console.log(this.state);
+  // }
   render() {
-    console.log(this.state);
+    console.log(typeof this.state.htmlTag, this.state.htmlTag);
     return (
       <>
         <NavBar />
