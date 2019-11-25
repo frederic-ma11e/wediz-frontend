@@ -89,7 +89,50 @@ class MainArticleForDetailPage extends Component {
           </ImageSlider>
         </ImageSliderContainer>
         <MainArticleContainer>
-          <TextContainer> {renderHTML(this.props.html)}</TextContainer>
+          <TextContainer>
+            {renderHTML(this.props.html)}
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd dkdkdkdkdkdkd
+            dkdkdkdkdkdkd
+          </TextContainer>
         </MainArticleContainer>
       </>
     );
@@ -117,7 +160,8 @@ const TextContainer = styled.div`
   margin-top: -150px;
   z-index: -1;
   position: relative;
-  top: -992px;
+  top: -492px;
+  font-size: 30px;
 `;
 
 const ImageSliderContainer = styled.div`
