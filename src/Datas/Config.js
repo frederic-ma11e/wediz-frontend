@@ -1,4 +1,4 @@
-export const API_TS = "http://15.164.245.121:8000";
+export const API_TS = "http://13.124.144.245:8000";
 export const API_SH = "http://15.164.245.121:8000";
 
 export const categoryList = [

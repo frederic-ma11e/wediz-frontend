@@ -1,17 +1,18 @@
+import { API_SH, API_TS } from "Datas/Config.js";
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import styled from "styled-components";
-import { API_TS } from "Datas/Config.js";
+import { color, device } from "Styles/Common.js";
+
+import BigLoginButton from "Components/BigLoginButton";
 import NavBar from "Components/NavBar";
 import ProgressCircle from "Components/ProgressCircle";
-import BigLoginButton from "Components/BigLoginButton";
+import PurchaseModal from "./PurchaseModal";
 import RewardHeader from "Components/RewardHeader";
 import RewardOption from "./RewardOption";
-import PurchaseModal from "./PurchaseModal";
-import SubHeader from "./SubHeader";
 import SponsorInput from "./SponsorInput";
+import SubHeader from "./SubHeader";
 import TotalFunding from "./TotalFunding";
-import { device, color } from "Styles/Common.js";
+import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 export class RewardList extends Component {
   state = {
@@ -164,12 +165,21 @@ export class RewardList extends Component {
 
     const selected_data = [];
     data.forEach(e => {
+      delete e.delivery_fee;
+      // delete e.introduction;
+      // delete e.maker_id;
+      // delete e.name;
+      // delete e.option;
+      // delete e.price;
+      // delete e.scheduled_date;
+      // delete e.seller_product_number;
+      e["sponser"] = Number(sponsor);
+
       if (e.quantity !== 0) {
         selected_data.push(e);
       }
     });
 
-    selected_data.forEach(e => {});
     this.props.history.push("/purchase");
     fetch(`${API_TS}/order/basket`, {
       method: "post",
@@ -177,8 +187,7 @@ export class RewardList extends Component {
         Authorization: window.localStorage.getItem("VALID_TOKEN")
       },
       body: JSON.stringify({
-        data: selected_data,
-        sponsor
+        data: selected_data
       })
     })
       .then(res => res.json())

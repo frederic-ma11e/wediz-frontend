@@ -1,14 +1,15 @@
-import React from "react";
-import styled from "styled-components";
-import { withRouter } from "react-router-dom";
-import { API_TS } from "Datas/Config.js";
-import navCategoryForMakerStudio from "Datas/CategoryForMakerStudio.js";
+import { API_SH, API_TS } from "Datas/Config.js";
+
 import AddRewardModal from "./AddRewardModal";
+import BaseInfo from "./BaseInfo";
+import DesignReward from "./DesignReward";
+import FundingStory from "Components/FundingStory.js";
 import HeaderForMakerStudio from "./HeaderForMakerStudio";
 import MakerStudioNav from "./MakerStudioNav.js";
-import FundingStory from "Components/FundingStory.js";
-import DesignReward from "./DesignReward";
-import BaseInfo from "./BaseInfo";
+import React from "react";
+import navCategoryForMakerStudio from "Datas/CategoryForMakerStudio.js";
+import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 class MakerStudioPage extends React.Component {
   state = {

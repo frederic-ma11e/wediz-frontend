@@ -1,13 +1,14 @@
+import { API_SH, API_TS } from "Datas/Config";
 import React, { Component } from "react";
-import styled from "styled-components";
-import { API_TS, API_SH } from "Datas/Config";
-import MakerNav from "./MakerNav";
-import MakerDesc from "./MakerDesc";
-import MakerSelection from "./MakerSelection";
-import MakerInput from "./MakerInput";
-import MakerHelper from "./MakerHelper";
-import BigLoginButton from "Components/BigLoginButton";
+
 import AgreementChk from "Components/AgreementChk";
+import BigLoginButton from "Components/BigLoginButton";
+import MakerDesc from "./MakerDesc";
+import MakerHelper from "./MakerHelper";
+import MakerInput from "./MakerInput";
+import MakerNav from "./MakerNav";
+import MakerSelection from "./MakerSelection";
+import styled from "styled-components";
 
 class MakerMaking extends Component {
   state = {
@@ -56,7 +57,7 @@ class MakerMaking extends Component {
       console.log("first responst====", response);
     });
 
-    fetch(`${API_SH}/fund/project`, {
+    fetch(`${API_TS}/fund/project`, {
       method: "POST",
       headers: {
         Authorization: window.localStorage.getItem("VALID_TOKEN")
@@ -93,8 +94,15 @@ class MakerMaking extends Component {
     this.props.history.push("/maker/funding/baseinfo");
   };
 
+  handleSelect = e => {
+    this.setState({
+      kind: e.target.value
+    });
+  };
+
   render() {
-    console.log(this.state.is_agreed);
+    const { name, kind, phone_number, is_agreed } = this.state;
+    console.log(name, kind, phone_number, is_agreed);
     return (
       <MakerWrapper>
         <MakerNav />
@@ -103,7 +111,7 @@ class MakerMaking extends Component {
           <MakerInput name="name" onChange={this.handleChange} type="text">
             메이커(기업)명
           </MakerInput>
-          <MakerSelection name="kind" onChange={this.handleChange} />
+          <MakerSelection name="kind" handleSelect={this.handleSelect} />
           <MakerInput
             name="user_name"
             value={this.state.user_name}
@@ -124,7 +132,12 @@ class MakerMaking extends Component {
             관리자명과 이메일 주소는 로그인 아이디와 연동되어 있으므로 변경을
             원할 경우 회원 정보 설정에서 변경하세요.
           </MakerHelper>
-          <MakerInput width="782px" display="inline-block" name="phone_number">
+          <MakerInput
+            width="782px"
+            display="inline-block"
+            name="phone_number"
+            onChange={this.handleChange}
+          >
             관리자 휴대폰 번호
           </MakerInput>
           <AgreementChk name="is_agreed" />
