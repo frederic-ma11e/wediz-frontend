@@ -1,17 +1,18 @@
+import { API_SH, API_TS } from "Datas/Config.js";
 import React, { Component } from "react";
-import styled from "styled-components";
-import { withRouter } from "react-router-dom";
-import { color } from "Styles/Common.js";
-import { API_TS, API_SH } from "Datas/Config.js";
-import LoginSignupHeader from "Components/LoginSignupHeader.js";
+
+import BigLoginButton from "Components/BigLoginButton.js";
 import InputWithButton from "Components/InputWithButton.js";
 import InputWithImage from "Components/InputWithImage.js";
-import BigLoginButton from "Components/BigLoginButton.js";
-import WrongMessage from "Components/WrongMessage";
-import TotalAgree from "./TotalAgree";
+import LoginSignupHeader from "Components/LoginSignupHeader.js";
 import Promotion from "./Promotion";
-import user from "Images/user.png";
+import TotalAgree from "./TotalAgree";
+import WrongMessage from "Components/WrongMessage";
+import { color } from "Styles/Common.js";
 import lock from "Images/lock.png";
+import styled from "styled-components";
+import user from "Images/user.png";
+import { withRouter } from "react-router-dom";
 
 class EmailSignup extends Component {
   state = {
@@ -76,7 +77,7 @@ class EmailSignup extends Component {
       re_password &&
       password === re_password
     ) {
-      fetch(`${API_SH}/account/signup`, {
+      fetch(`${API_TS}/account/signup`, {
         method: "post",
         body: JSON.stringify({
           email,

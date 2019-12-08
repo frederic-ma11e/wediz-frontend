@@ -1,13 +1,14 @@
+import { API_SH, API_TS } from "Datas/Config";
 import React, { Component } from "react";
-import styled from "styled-components";
-import { API_TS, API_SH } from "Datas/Config";
-import MakerNav from "./MakerNav";
-import MakerDesc from "./MakerDesc";
-import MakerSelection from "./MakerSelection";
-import MakerInput from "./MakerInput";
-import MakerHelper from "./MakerHelper";
-import BigLoginButton from "Components/BigLoginButton";
+
 import AgreementChk from "Components/AgreementChk";
+import BigLoginButton from "Components/BigLoginButton";
+import MakerDesc from "./MakerDesc";
+import MakerHelper from "./MakerHelper";
+import MakerInput from "./MakerInput";
+import MakerNav from "./MakerNav";
+import MakerSelection from "./MakerSelection";
+import styled from "styled-components";
 
 class MakerMaking extends Component {
   state = {
@@ -22,7 +23,7 @@ class MakerMaking extends Component {
 
   componentDidMount() {
     const key = window.localStorage.getItem("VALID_TOKEN");
-    fetch(`${API_SH}/account/maker`, {
+    fetch(`${API_TS}/account/maker`, {
       method: "GET",
       headers: { Authorization: key }
     })
@@ -38,44 +39,37 @@ class MakerMaking extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-
     const { name, kind, phone_number, is_agreed } = this.state;
 
-    fetch(`${API_SH}/fund/project`, {
+    fetch(`${API_TS}/account/maker`, {
       method: "POST",
       headers: {
-        Authorization:
-          "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoyLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDg3NzUzfQ.ImpSLmihoK8qja3L9iEwLk2jKAxGaUAhoVDIb6mLTKA"
-        //window.localStorage.getItem("VALID_TOKEN")
+        Authorization: window.localStorage.getItem("VALID_TOKEN")
+      },
+      body: JSON.stringify({
+        name,
+        kind,
+        phone_number,
+        is_agreed: true
+      })
+    }).then(response => {
+      response.json();
+      console.log("first responst====", response);
+    });
+
+    fetch(`${API_TS}/fund/project`, {
+      method: "POST",
+      headers: {
+        Authorization: window.localStorage.getItem("VALID_TOKEN")
       }
     })
       .then(response => response.json())
       .then(response => {
         console.log("성현님===", response);
         if (response.MESSAGE === "SUCCESS") {
+          this.goToMakerStudio();
         }
       });
-    setTimeout(
-      fetch(`${API_SH}/account/maker`, {
-        method: "POST",
-        headers: {
-          Authorization: window.localStorage.getItem("VALID_TOKEN")
-        },
-        body: JSON.stringify({
-          name,
-          kind,
-          phone_number,
-          is_agreed: true
-        })
-      })
-        .then(response => {
-          response.json();
-        })
-        .then(response => {
-          this.props.history.push("/maker/funding/baseinfo");
-        }),
-      1000
-    );
   };
 
   handleChange = e => {
@@ -94,6 +88,10 @@ class MakerMaking extends Component {
     this.setState({
       is_agreed: true
     });
+  };
+
+  goToMakerStudio = () => {
+    this.props.history.push("/maker/funding/baseinfo");
   };
 
   handleSelect = e => {

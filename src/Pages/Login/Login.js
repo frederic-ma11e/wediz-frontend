@@ -1,17 +1,18 @@
+import { API_SH, API_TS } from "Datas/Config";
 import React, { Component } from "react";
-import styled from "styled-components";
-import { withRouter } from "react-router-dom";
-import { API_TS, API_SH } from "Datas/Config";
-import InputBox from "Components/InputBox.js";
-import LoginSignupHeader from "Components/LoginSignupHeader.js";
-import WrongMessage from "Components/WrongMessage";
+
 import BigLoginButton from "Components/BigLoginButton.js";
-import LoginAction from "./LoginAction";
 import ButtonWithLogo from "Components/ButtonWithLogo.js";
+import GoToSignup from "./GoToSignup";
+import InputBox from "Components/InputBox.js";
+import LoginAction from "./LoginAction";
+import LoginSignupHeader from "Components/LoginSignupHeader.js";
 import SocialLogin from "./SocialLogin";
 import TextWithLine from "./TextWithLine";
-import GoToSignup from "./GoToSignup";
+import WrongMessage from "Components/WrongMessage";
 import facebookLogo from "Images/facebook-icon.png";
+import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 class Login extends Component {
   state = {
@@ -33,7 +34,7 @@ class Login extends Component {
 
   handleLogin = () => {
     const { email, password } = this.state;
-    fetch(`${API_SH}/account/signin`, {
+    fetch(`${API_TS}/account/signin`, {
       method: "post",
       body: JSON.stringify({
         email,
@@ -44,8 +45,10 @@ class Login extends Component {
       .then(res => {
         window.localStorage.setItem("VALID_TOKEN", res.VALID_TOKEN);
         if (res.VALID_TOKEN) {
+          console.log(res);
           this.goToMain();
         } else {
+          console.log(res);
           this.setState({
             is_login: "inline"
           });

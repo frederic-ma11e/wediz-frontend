@@ -1,20 +1,21 @@
+import { API_SH, API_TS } from "Datas/Config.js";
 import React, { Component } from "react";
-import { withRouter } from "react-router-dom";
-import styled from "styled-components";
-import { FundContext } from "Datas/CompanyData";
-import { API_TS, API_SH } from "Datas/Config.js";
-import NavBar from "Components/NavBar";
-import RewardHeader from "Components/RewardHeader";
-import ProgressCircle from "Components/ProgressCircle";
-import BigLoginButton from "Components/BigLoginButton";
-import PaymentContainer from "./PaymentContainer";
-import FinalPrice from "./FinalPrice";
-import UserInfo from "./UserInfo";
-import Address from "./Address";
-import CardInfo from "./CardInfo";
-import Precaution from "./Precaution";
-import Agree from "./Agree";
 import { color, device } from "Styles/Common.js";
+
+import Address from "./Address";
+import Agree from "./Agree";
+import BigLoginButton from "Components/BigLoginButton";
+import CardInfo from "./CardInfo";
+import FinalPrice from "./FinalPrice";
+import { FundContext } from "Datas/CompanyData";
+import NavBar from "Components/NavBar";
+import PaymentContainer from "./PaymentContainer";
+import Precaution from "./Precaution";
+import ProgressCircle from "Components/ProgressCircle";
+import RewardHeader from "Components/RewardHeader";
+import UserInfo from "./UserInfo";
+import styled from "styled-components";
+import { withRouter } from "react-router-dom";
 
 class Purchase extends Component {
   state = {
@@ -41,26 +42,16 @@ class Purchase extends Component {
   };
   componentDidMount = () => {
     const { data } = this.state;
-    if (data.length === 0) {
-      this.props.history.push("/rewardlist");
-    } else {
-      fetch(`${API_SH}/data/user.json`)
-        .then(res => res.json())
-        .then(res => {
-          this.setState({
-            user: res.data
-          });
-        });
-      let total = 0;
-      data.forEach(e => {
-        total = total + e.price * e.quantity;
-      });
+    fetch(`${API_TS}/account/modifyprofile`);
 
-      this.setState({
-        total
-      });
-    }
-    console.log("되라", this.state.data);
+    let total = 0;
+    data.forEach(e => {
+      total = total + e.price * e.quantity;
+    });
+
+    this.setState({
+      total
+    });
   };
 
   handleChange = e => {
@@ -123,9 +114,9 @@ class Purchase extends Component {
       totalAgree &&
       necessaryCheck
     ) {
-      fetch(`${API_SH}/basket`, {
+      fetch(`${API_TS}/order`, {
         method: "post",
-        header: window.localStorage.getItem("VALID_TOKEN"),
+        headers: { Authorization: window.localStorage.getItem("VALID_TOKEN") },
         body: JSON.stringify({
           delivery_name: name,
           delivery_number: phoneNumber,
@@ -133,15 +124,15 @@ class Purchase extends Component {
           delivery_request: request,
           card_number: cardTotal,
           card_period: verifyPeriod,
-          card_password: cardPassword,
           card_birthday: identification,
           is_agreed: totalAgree,
-          is_support_agreed: necessaryCheck
+          is_support_agreed: necessaryCheck,
+          reward: 1
         })
       })
         .then(res => res.json())
         .then(res => {
-          console.log(res);
+          console.log("결제하기 response ====", res);
         });
       let keyToRemove = ["data", "sponsor"];
       keyToRemove.forEach(key => window.localStorage.removeItem(key));
