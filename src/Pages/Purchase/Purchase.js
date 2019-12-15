@@ -101,9 +101,6 @@ class Purchase extends Component {
       cardThird,
       cardFourth
     } = this.state;
-    this.setState({
-      cardTotal: Number(cardFirst + cardSecond + cardThird + cardFourth)
-    });
     if (
       name &&
       phoneNumber &&
@@ -118,25 +115,42 @@ class Purchase extends Component {
         method: "post",
         headers: { Authorization: window.localStorage.getItem("VALID_TOKEN") },
         body: JSON.stringify({
-          delivery_name: name,
-          delivery_number: phoneNumber,
-          delivery_address: address,
-          delivery_request: request,
-          card_number: cardTotal,
-          card_period: verifyPeriod,
-          card_birthday: identification,
-          is_agreed: totalAgree,
-          is_support_agreed: necessaryCheck,
-          reward: 1
+          data: [
+            {
+              id: 1,
+              delivery_name: name,
+              delivery_number: phoneNumber,
+              delivery_address: address,
+              delivery_request: request,
+              card_number: Number(
+                cardFirst + cardSecond + cardThird + cardFourth
+              ),
+              card_period: verifyPeriod,
+              card_birthday: identification,
+              is_agreed: totalAgree,
+              is_support_agreed: necessaryCheck,
+              reward: 1
+            }
+          ]
         })
       })
         .then(res => res.json())
         .then(res => {
           console.log("결제하기 response ====", res);
         });
+      console.log(
+        name,
+        phoneNumber,
+        address,
+        request,
+        Number(cardFirst + cardSecond + cardThird + cardFourth),
+        verifyPeriod,
+        identification,
+        totalAgree,
+        necessaryCheck
+      );
       let keyToRemove = ["data", "sponsor"];
       keyToRemove.forEach(key => window.localStorage.removeItem(key));
-      this.props.history.push("/");
     } else {
       alert("필수 항목을 입력해주시거나 체크해주시기 바랍니다.");
     }
