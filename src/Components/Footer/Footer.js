@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import styled from "styled-components";
 import { font, color, device } from "Styles/Common.js";
-//import icon from "Images/socialicon.png";
+import icon from "Images/socialicon.png";
 
 class Footer extends Component {
   render() {
@@ -121,6 +121,7 @@ const IconImg = styled.a`
   transition: color 0.2s;
   color: #212121;
   z-index: 100;
+  backbackground-position: 0 -20px;
 `;
 
 export default Footer;
