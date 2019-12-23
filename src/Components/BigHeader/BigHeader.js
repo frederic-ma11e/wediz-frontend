@@ -7,60 +7,20 @@ class BigHeader extends Component {
   constructor() {
     super();
     this.state = {
-      i: 0,
-      headline: data[0].headline,
-      path: data[0].path
+      data: data
     };
   }
-
-  moveSlider = (e, point = 1) => {
-    let nextI = this.state.i;
-    nextI += point;
-    clearInterval(this.interval);
-
-    this.interval = setInterval(() => this.moveSlider(null), 3000);
-
-    setTimeout(this.interval, 1000);
-
-    if (nextI >= data.length) {
-      nextI = 0;
-    }
-    if (nextI < 0) {
-      nextI = data.length - 1;
-    }
-    this.setState({
-      i: nextI,
-      headline: data[nextI].headline,
-      path: data[nextI].path
-    });
-  };
-
-  indicatorClick = e => {
-    const index = Number(e.target.dataset.index);
-    clearInterval(this.interval);
-    setTimeout(() => {
-      this.interval = setInterval(() => {
-        this.moveSlider(null);
-      }, 3000);
-    }, 1000);
-
-    this.setState({
-      i: index,
-      headline: data[index].headline,
-      path: data[index].path
-    });
-  };
 
   render() {
     return (
       <Container>
         <Slider>
-          <Title>클래식의 대명사 메일백의 재해석</Title>
+          <Title>{data[0].headline}</Title>
           <ArrowBtnWrapper>
-            <ButtonLeft onClick={e => this.moveSlider(e, -1)}>
+            <ButtonLeft>
               <SpanLeft />
             </ButtonLeft>
-            <ButtonRight onClick={e => this.moveSlider(e, 1)}>
+            <ButtonRight>
               <SpanRight />
             </ButtonRight>
           </ArrowBtnWrapper>

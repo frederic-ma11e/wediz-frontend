@@ -1,17 +1,18 @@
 import React, { Component } from "react";
-import styled from "styled-components";
+
 import { API_TS } from "Datas/Config.js";
-import { withRouter } from "react-router-dom";
-import axios from "axios";
+import BigLoginButton from "Components/BigLoginButton.js";
 import CenterContainer from "Components/CenterContainer.js";
 import FileUpload from "Components/FileUpload.js";
+import InterestList from "./InterestList";
 import LoginSignupHeader from "Components/LoginSignupHeader.js";
-import BigLoginButton from "Components/BigLoginButton.js";
-import WrongMessage from "Components/WrongMessage.js";
 import SmallTitle from "./SmallTitle";
 import UserInfo from "./UserInfo";
-import InterestList from "./InterestList";
+import WrongMessage from "Components/WrongMessage.js";
+import axios from "axios";
+import styled from "styled-components";
 import user from "Images/user.png";
+import { withRouter } from "react-router-dom";
 
 class MyProfile extends Component {
   state = {
@@ -50,12 +51,14 @@ class MyProfile extends Component {
       axios
         .post(`${API_TS}/account/modifyprofilephoto`, formData, {
           headers: {
-            Authorization: window.localStorage.VALID_TOKEN
+            Authorization: window.localStorage.getItem("VALID_TOKEN")
           }
         })
         .then(res => {
+          console.log("file upload====", res.data.photo_url);
+          const image_url = res.data.photo_url;
           this.setState({
-            image_url: res.data.photo_url
+            image_url
           });
         });
     } else {
@@ -66,7 +69,7 @@ class MyProfile extends Component {
   };
 
   goToMyPage = () => {
-    this.props.history.push("/mypage");
+    this.props.history.push("/");
   };
 
   handleCategory = e => {
@@ -105,7 +108,7 @@ class MyProfile extends Component {
     fetch(`${API_TS}/account/modifyprofile`, {
       method: "post",
       headers: {
-        Authorization: window.localStorage.VALID_TOKEN
+        Authorization: window.localStorage.getItem("VALID_TOKEN")
       },
       body: JSON.stringify({
         education_kids,
@@ -128,6 +131,7 @@ class MyProfile extends Component {
       .then(res => res.json())
       .then(res => {
         if (res.MESSAGE === "SUCCESS") {
+          console.log(res);
           this.goToMyPage();
         }
       });
