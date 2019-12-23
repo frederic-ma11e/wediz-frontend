@@ -35,10 +35,10 @@ class FundingStoryIntroForm extends Component {
       }
     }
     axios
-      .post("http://10.58.6.160:8000/fund/storyimage", formData, {
+      .post("http://13.124.144.245/fund/storyimage", formData, {
         headers: {
           Authorization:
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDUzMTM1fQ.h2Em9RYbqz4MyxkNG6KlqNbQzew6xldzHr_TXbXcl3w"
+            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDgwNTY4fQ.cehBdjVmvqRu0P9Bd9n9ZKtX-5SWdqAVyBJQ3VX2cUE"
         },
         body: {
           photo: "file"

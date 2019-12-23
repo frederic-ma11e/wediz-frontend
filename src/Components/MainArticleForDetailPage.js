@@ -68,6 +68,7 @@ class MainArticleForDetailPage extends Component {
       );
 
     console.log("paramRendered===", this.props.match);
+    // let abc = new Promise;
   }
   render() {
     console.log("관희님 데이터", this.state);
