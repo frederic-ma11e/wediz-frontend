@@ -117,19 +117,18 @@ class Purchase extends Component {
         body: JSON.stringify({
           data: [
             {
-              id: 1,
+              id: 7,
+              reward: 1,
               delivery_name: name,
               delivery_number: phoneNumber,
               delivery_address: address,
               delivery_request: request,
-              card_number: Number(
-                cardFirst + cardSecond + cardThird + cardFourth
-              ),
+              card_number: cardFirst + cardSecond + cardThird + cardFourth,
               card_period: verifyPeriod,
+              card_password: 12,
               card_birthday: identification,
               is_agreed: totalAgree,
-              is_support_agreed: necessaryCheck,
-              reward: 1
+              is_support_agreed: necessaryCheck
             }
           ]
         })
@@ -143,7 +142,7 @@ class Purchase extends Component {
         phoneNumber,
         address,
         request,
-        Number(cardFirst + cardSecond + cardThird + cardFourth),
+        cardFirst + cardSecond + cardThird + cardFourth,
         verifyPeriod,
         identification,
         totalAgree,
@@ -151,6 +150,7 @@ class Purchase extends Component {
       );
       let keyToRemove = ["data", "sponsor"];
       keyToRemove.forEach(key => window.localStorage.removeItem(key));
+      alert("결제가 완료되었습니다.");
     } else {
       alert("필수 항목을 입력해주시거나 체크해주시기 바랍니다.");
     }
