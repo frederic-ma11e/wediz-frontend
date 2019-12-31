@@ -29,6 +29,7 @@ class FundingStoryIntroForm extends Component {
     console.log("typeof filelist===", this.state.file[0]);
     const { file } = this.state;
     const formData = new FormData();
+    const token = window.localStorage.getItem("VALID_TOKEN");
     if (file.length > 0) {
       for (let i = 0; i < file.length; i++) {
         formData.append("photo", file[i], file[i].name);
@@ -37,8 +38,7 @@ class FundingStoryIntroForm extends Component {
     axios
       .post("http://13.124.144.245/fund/storyimage", formData, {
         headers: {
-          Authorization:
-            "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjoxLCJ1c2VyX2lzX21ha2VyIjpmYWxzZSwiZXhwIjoxNTc0NDgwNTY4fQ.cehBdjVmvqRu0P9Bd9n9ZKtX-5SWdqAVyBJQ3VX2cUE"
+          Authorization: token
         },
         body: {
           photo: "file"
