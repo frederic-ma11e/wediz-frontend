@@ -14,7 +14,7 @@ const LoginSignupHeader = ({ children, ...props }) => {
 export default LoginSignupHeader;
 
 const Title = styled.h2`
-  font-size: ${props => props.size || "30px"}
+  font-size: ${props => props.size || "30px"};
   font-weight: ${props => props.weight || "800"};
 `;
 

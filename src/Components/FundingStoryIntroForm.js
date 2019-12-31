@@ -6,7 +6,7 @@ import SectionDetail from "./SectionDetail.js";
 import { color } from "Styles/Common.js";
 import CameraIcon from "Images/camera11.png";
 import VideoIcon from "Images/video11.png";
-// import axios from "axios";
+import axios from "axios";
 
 class FundingStoryIntroForm extends Component {
   state = {
@@ -29,18 +29,22 @@ class FundingStoryIntroForm extends Component {
     console.log("typeof filelist===", this.state.file[0]);
     const { file } = this.state;
     const formData = new FormData();
-    // if (file.length >0) {
-    //   for (let i=0; i < file.length; i++) {
-    //     formData.append("photo", file[i], file[i].name)
-    //   }
-    // }
-    // axios
-    // .post('', formData, {
-    //   headers: {
-    //     key: "value"
-    //   }
-    // })
-    // .then(res=> console.log(res))
+    const token = window.localStorage.getItem("VALID_TOKEN");
+    if (file.length > 0) {
+      for (let i = 0; i < file.length; i++) {
+        formData.append("photo", file[i], file[i].name);
+      }
+    }
+    axios
+      .post("http://13.124.144.245/fund/storyimage", formData, {
+        headers: {
+          Authorization: token
+        },
+        body: {
+          photo: "file"
+        }
+      })
+      .then(res => console.log("send", res));
   };
 
   handleImagePreview = event => {

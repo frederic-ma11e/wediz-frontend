@@ -26,7 +26,7 @@ class RewardDetailPage extends Component {
       title: "[곰세마리양조장] 꿀로 만든 술이 있을까요? 겨울의 제주, 밀감꿀술",
       endDate: "",
       targetGoad: "",
-      htmlTag: ""
+      htmlTag: window.localStorage.getItem("content")
     };
   }
   //   componentDidMount() {
@@ -42,7 +42,15 @@ class RewardDetailPage extends Component {
 
   //     console.log("paramRendered===", this.props.match);
   //   }
+  // componentDidMount() {
+  //   const rawHTML = window.localStorage.getItem("content");
+  //   this.setState = {
+  //     htmlTag: rawHTML
+  //   };
+  //   console.log(this.state);
+  // }
   render() {
+    console.log(typeof this.state.htmlTag, this.state.htmlTag);
     return (
       <>
         <NavBar />
@@ -56,6 +64,7 @@ class RewardDetailPage extends Component {
         <MainArticleForDetailPage
           photo={this.state.photo}
           length={this.state.photo.length}
+          html={this.state.htmlTag}
         />
         <footer></footer>
       </>

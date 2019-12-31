@@ -9,6 +9,7 @@ import RewardList from "./Pages/RewardList";
 import Purchase from "./Pages/Purchase";
 import MakerStudioPage from "./Pages/MakerStudioPage";
 import RewardDetailPage from "./Components/RewardDetailPage.js";
+import FundingStory from "./Components/FundingStory";
 class Routes extends React.Component {
   render() {
     return (
@@ -23,6 +24,7 @@ class Routes extends React.Component {
           <Route exact path="/rewardlist" component={RewardList} />
           <Route exact path="/purchase" component={Purchase} />
           <Route exact path="/detail" component={RewardDetailPage} />
+          <Route exact path="/abc" component={FundingStory} />
         </Switch>
       </Router>
     );
